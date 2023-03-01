@@ -311,4 +311,6 @@ finalSound = dynCompressor(drone, threshold, slope);
 figure(8);
 plot(t, finalSound);
 
+audiowrite('final.wav', finalSound, fs);
+
 
