@@ -62,7 +62,7 @@ function y = schroederReverb(input, coef, combDelays, allPassDelays, fs)
   comb3 = iirComb(input, coef, combDelays(3), fs);
   comb4 = iirComb(input, coef, combDelays(4), fs);
 
-  combedSignal = 0.25 * (comb1 + comb2 + comb3 + comb4);
+  combedSignal = comb1 + comb2 + comb3 + comb4;
   allPass1 = allPass(combedSignal, coef, allPassDelays(1), fs);
   y = allPass(allPass1, coef, allPassDelays(2), fs);
 endfunction
@@ -217,3 +217,5 @@ endfor
 finalSignal = schroederReverb(drone, coef, combDelays, allPassDelays, fs);
 figure(3);
 plot(t, finalSignal);
+
+audiowrite('final3.wav', finalSignal, fs);
