@@ -106,7 +106,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--log', type=str, default='warn', help='Log level (choose from debug, info, warning, error and critical)')
+    parser.add_argument('--log', type=str, default='info', help='Log level (choose from debug, info, warning, error and critical)')
     args = parser.parse_args()
 
     levels = {
@@ -143,9 +143,9 @@ if __name__ == '__main__':
     b = 1
     a = 0.96
     k = 10
-    #getFreqAndPhaseResponse(fs, b, a, k)
+    getFreqAndPhaseResponse(fs, b, a, k)
     
-    #print('Ans: This is a feedback, or IIR, filter.')
+    print('Ans: This is a feedback, or IIR, filter.')
 
 
     p2_text = '''
@@ -169,7 +169,7 @@ if __name__ == '__main__':
         sequence[int((i*fs)):int((i*fs + len(kick)))] += kick
     for i in np.linspace(4.5, 8.5, 4, endpoint=False):
         sequence[int((i*fs)):int((i*fs + len(snare)))] += snare
-    #sf.write('seq.wav', sequence, fs)
+    sf.write('seq.wav', sequence, fs)
 
     p3_text = '''
     Write a program that will create a sine tone which will sweep from 0 Hz to 80k Hz at
@@ -188,7 +188,7 @@ if __name__ == '__main__':
     
     fmax = 80000
     fstep = 100
-    #sineSweepAndPlot(fs, fmax, fstep)
+    sineSweepAndPlot(fs, fmax, fstep)
     print('Ans: The fundamental frequency seems to be moving back and forth. This is due to aliasing.\n \
             Because the fundamental reaches above nyquist (fs/2), we start to see the frequency going\n \
             down instead of up, even though we know this is not the case.')
